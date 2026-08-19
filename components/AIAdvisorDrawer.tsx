@@ -242,12 +242,12 @@ export const AIAdvisorDrawer: React.FC = () => {
         </div>
 
         {/* Quick Suggestion Chips */}
-        <div className="px-4 py-2 border-t border-gray-100 dark:border-slate-800 bg-gray-50 dark:bg-slate-850 flex gap-1.5 overflow-x-auto no-scrollbar">
+        <div className="px-4 py-2 border-t border-gray-200 dark:border-slate-800 bg-gray-50 dark:bg-slate-800 flex gap-1.5 overflow-x-auto no-scrollbar">
           {INITIAL_PROMPTS.map((prompt, i) => (
             <button
               key={i}
               onClick={() => handleSendMessage(prompt)}
-              className="px-2.5 py-1 rounded-full bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:bg-amber-50 hover:border-amber-400 transition-colors shrink-0"
+              className="px-2.5 py-1 rounded-full bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-[11px] font-medium text-gray-700 dark:text-gray-300 hover:bg-amber-50 dark:hover:bg-slate-700 hover:border-amber-400 dark:hover:border-amber-400 transition-colors shrink-0 cursor-pointer"
             >
               {prompt}
             </button>

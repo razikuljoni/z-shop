@@ -64,14 +64,14 @@ export const LiveTrackingModal: React.FC = () => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-slate-800 bg-gray-50 dark:bg-slate-850">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-slate-800 bg-gray-100 dark:bg-slate-800">
           <div className="flex items-center gap-2">
             <Truck size={20} className="text-amber-500" />
             <div>
               <h2 className="text-sm font-black text-gray-900 dark:text-gray-100">
                 Live GPS Delivery Radar
               </h2>
-              <span className="text-[11px] text-gray-500 font-mono">
+              <span className="text-[11px] text-gray-600 dark:text-gray-400 font-mono">
                 Tracking ID: {order.trackingNumber || 'ZTRK-88921-WA'}
               </span>
             </div>
@@ -79,7 +79,7 @@ export const LiveTrackingModal: React.FC = () => {
 
           <button
             onClick={() => setActiveOrderForTracking(null)}
-            className="p-1.5 rounded-full text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
           >
             <X size={20} />
           </button>
@@ -137,7 +137,7 @@ export const LiveTrackingModal: React.FC = () => {
 
           {/* Courier Card */}
           {order.status !== 'Delivered' && (
-            <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-800 flex items-center justify-between">
+            <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-amber-400 text-slate-950 font-black flex items-center justify-center text-base shadow-sm">
                   DK
@@ -149,7 +149,7 @@ export const LiveTrackingModal: React.FC = () => {
                       4.9★ (840 drops)
                     </span>
                   </div>
-                  <div className="text-[11px] text-gray-500">
+                  <div className="text-[11px] text-gray-600 dark:text-gray-400">
                     Z-Prime Eco Electric Van #402
                   </div>
                 </div>
@@ -158,14 +158,14 @@ export const LiveTrackingModal: React.FC = () => {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => alert('Simulated driver call initiated: Connecting to Dave Kowalski...')}
-                  className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-300 hover:text-amber-500 transition-colors"
+                  className="p-2 rounded-lg bg-white dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-gray-200 hover:text-amber-500 transition-colors"
                   title="Call Courier"
                 >
                   <Phone size={16} />
                 </button>
                 <button
                   onClick={() => alert('Simulated SMS: "Hi Alex, I am on the way with your Z Shop parcel."')}
-                  className="p-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-300 hover:text-amber-500 transition-colors"
+                  className="p-2 rounded-lg bg-white dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-700 dark:text-gray-200 hover:text-amber-500 transition-colors"
                   title="Message Courier"
                 >
                   <MessageSquare size={16} />
@@ -201,9 +201,9 @@ export const LiveTrackingModal: React.FC = () => {
                       <span className={`font-bold ${isCurrent ? 'text-amber-600 dark:text-amber-400' : 'text-gray-800 dark:text-gray-200'}`}>
                         {stepItem.title}
                       </span>
-                      <span className="text-[11px] text-gray-400 font-mono">{stepItem.time}</span>
+                      <span className="text-[11px] text-gray-500 dark:text-gray-400 font-mono">{stepItem.time}</span>
                     </div>
-                    <div className="text-[11px] text-gray-500">{stepItem.desc}</div>
+                    <div className="text-[11px] text-gray-600 dark:text-gray-400">{stepItem.desc}</div>
                   </div>
                 );
               })}
@@ -211,12 +211,12 @@ export const LiveTrackingModal: React.FC = () => {
           </div>
 
           {/* Order Details Preview */}
-          <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-800 text-xs space-y-2">
+          <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 text-xs space-y-2">
             <div className="font-bold text-gray-900 dark:text-gray-100">Package Contents</div>
             <div className="divide-y divide-gray-200 dark:divide-slate-800">
               {order.items.map((item, i) => (
                 <div key={i} className="py-1.5 flex items-center justify-between">
-                  <span className="truncate max-w-[280px]">{item.product.title}</span>
+                  <span className="truncate max-w-[280px] text-gray-700 dark:text-gray-300">{item.product.title}</span>
                   <span className="font-bold text-gray-900 dark:text-gray-100">
                     Qty: {item.quantity} ({formatPrice(item.product.price * item.quantity)})
                   </span>
@@ -227,8 +227,8 @@ export const LiveTrackingModal: React.FC = () => {
         </div>
 
         {/* Footer with Demo Simulator Button */}
-        <div className="p-4 sm:p-5 border-t border-gray-200 dark:border-slate-800 bg-gray-50 dark:bg-slate-850 flex items-center justify-between">
-          <div className="text-[11px] text-gray-500">
+        <div className="p-4 sm:p-5 border-t border-gray-200 dark:border-slate-800 bg-gray-100 dark:bg-slate-800 flex items-center justify-between">
+          <div className="text-[11px] text-gray-600 dark:text-gray-400">
             Interactive Test Hub: Advance order pipeline
           </div>
 

@@ -152,21 +152,21 @@ export const CheckoutModal: React.FC = () => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-slate-800 bg-gray-50 dark:bg-slate-850">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-slate-800 bg-gray-100 dark:bg-slate-800">
           <div className="flex items-center gap-2">
             <div className="flex items-center font-black text-lg">
               <span className="text-slate-900 dark:text-white">Z</span>
               <span className="text-amber-500">SHOP</span>
             </div>
-            <span className="text-gray-300 dark:text-slate-700">•</span>
-            <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
+            <span className="text-gray-400 dark:text-slate-600">•</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-400">
               Secure 256-Bit Checkout
             </span>
           </div>
 
           <button
             onClick={() => setIsCheckoutOpen(false)}
-            className="p-1.5 rounded-full text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
           >
             <X size={20} />
           </button>
@@ -174,12 +174,12 @@ export const CheckoutModal: React.FC = () => {
 
         {/* Wizard Stepper (Only when not success) */}
         {step !== 'success' && (
-          <div className="px-6 py-3 bg-amber-50/50 dark:bg-slate-850 border-b border-gray-200 dark:border-slate-800 flex items-center justify-between text-xs">
+          <div className="px-6 py-3 bg-amber-50/70 dark:bg-slate-800/60 border-b border-gray-200 dark:border-slate-800 flex items-center justify-between text-xs">
             <div className="flex items-center gap-2">
-              <span className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs ${step === 'address' ? 'bg-amber-500 text-slate-950' : 'bg-gray-200 dark:bg-slate-700 text-gray-600'}`}>
+              <span className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs ${step === 'address' ? 'bg-amber-500 text-slate-950' : 'bg-gray-200 dark:bg-slate-700 text-gray-600 dark:text-gray-300'}`}>
                 1
               </span>
-              <span className={step === 'address' ? 'font-bold text-gray-900 dark:text-gray-100' : 'text-gray-400'}>
+              <span className={step === 'address' ? 'font-bold text-gray-900 dark:text-gray-100' : 'text-gray-500 dark:text-gray-400'}>
                 Shipping Address
               </span>
             </div>
@@ -258,14 +258,14 @@ export const CheckoutModal: React.FC = () => {
                   ))}
                 </div>
               ) : (
-                <div className="space-y-3 bg-gray-50 dark:bg-slate-850 p-4 rounded-xl border border-gray-200 dark:border-slate-800 text-xs">
+                <div className="space-y-3 bg-gray-50 dark:bg-slate-800 p-4 rounded-xl border border-gray-200 dark:border-slate-800 text-xs">
                   <div>
                     <label className="font-bold text-gray-700 dark:text-gray-300 block mb-1">Full Name</label>
                     <input
                       type="text"
                       value={newAddress.fullName}
                       onChange={(e) => setNewAddress({ ...newAddress, fullName: e.target.value })}
-                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-gray-100"
                     />
                   </div>
                   <div>
@@ -531,11 +531,11 @@ export const CheckoutModal: React.FC = () => {
               </div>
 
               {/* Order Breakdown Summary Box */}
-              <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-800 space-y-2 text-xs">
+              <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 space-y-2 text-xs">
                 <div className="font-bold text-gray-900 dark:text-gray-100">Order Summary</div>
-                <div className="flex justify-between text-gray-500">
+                <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>Items ({cart.reduce((s, i) => s + i.quantity, 0)}):</span>
-                  <span>{formatPrice(cartSubtotal)}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">{formatPrice(cartSubtotal)}</span>
                 </div>
                 {cartDiscount > 0 && (
                   <div className="flex justify-between text-emerald-600 font-semibold">
@@ -543,13 +543,13 @@ export const CheckoutModal: React.FC = () => {
                     <span>-{formatPrice(cartDiscount)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-gray-500">
+                <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>Shipping & Handling:</span>
-                  <span>{cartShipping === 0 ? 'FREE' : formatPrice(cartShipping)}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">{cartShipping === 0 ? 'FREE' : formatPrice(cartShipping)}</span>
                 </div>
-                <div className="flex justify-between text-gray-500">
+                <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>Estimated Tax:</span>
-                  <span>{formatPrice(cartTax)}</span>
+                  <span className="font-semibold text-gray-900 dark:text-gray-100">{formatPrice(cartTax)}</span>
                 </div>
                 <div className="flex justify-between text-sm font-black text-gray-900 dark:text-gray-100 pt-1.5 border-t border-gray-200 dark:border-slate-800">
                   <span>Order Total:</span>
@@ -650,17 +650,17 @@ export const CheckoutModal: React.FC = () => {
               </div>
 
               {/* Order Card Receipt */}
-              <div className="max-w-md mx-auto p-4 rounded-xl bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-800 text-left text-xs space-y-2">
+              <div className="max-w-md mx-auto p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 text-left text-xs space-y-2">
                 <div className="flex justify-between border-b border-gray-200 dark:border-slate-800 pb-2">
-                  <span className="text-gray-500">Order Number:</span>
+                  <span className="text-gray-600 dark:text-gray-400">Order Number:</span>
                   <span className="font-mono font-bold text-gray-900 dark:text-gray-100">{createdOrder.id}</span>
                 </div>
                 <div className="flex justify-between border-b border-gray-200 dark:border-slate-800 pb-2">
-                  <span className="text-gray-500">Estimated Delivery:</span>
+                  <span className="text-gray-600 dark:text-gray-400">Estimated Delivery:</span>
                   <span className="font-bold text-blue-600 dark:text-blue-400">{createdOrder.estimatedDelivery}</span>
                 </div>
                 <div className="flex justify-between border-b border-gray-200 dark:border-slate-800 pb-2">
-                  <span className="text-gray-500">Ship To:</span>
+                  <span className="text-gray-600 dark:text-gray-400">Ship To:</span>
                   <span className="font-semibold text-gray-900 dark:text-gray-100">
                     {createdOrder.shippingAddress.addressLine1}, {createdOrder.shippingAddress.city}
                   </span>

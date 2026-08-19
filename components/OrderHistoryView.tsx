@@ -150,21 +150,21 @@ export const OrderHistoryView: React.FC = () => {
               className="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm overflow-hidden"
             >
               {/* Order Header Meta */}
-              <div className="bg-gray-50 dark:bg-slate-850 px-6 py-3.5 border-b border-gray-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs">
+              <div className="bg-gray-100 dark:bg-slate-800 px-6 py-3.5 border-b border-gray-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs">
                 <div className="flex flex-wrap items-center gap-6">
                   <div>
-                    <span className="text-gray-400 block text-[10px] uppercase font-bold">Order Placed</span>
-                    <span className="font-bold text-gray-800 dark:text-gray-200">{order.placedAt}</span>
+                    <span className="text-gray-600 dark:text-gray-400 block text-[10px] uppercase font-bold tracking-wider">Order Placed</span>
+                    <span className="font-bold text-gray-900 dark:text-gray-100">{order.placedAt}</span>
                   </div>
 
                   <div>
-                    <span className="text-gray-400 block text-[10px] uppercase font-bold">Total</span>
+                    <span className="text-gray-600 dark:text-gray-400 block text-[10px] uppercase font-bold tracking-wider">Total</span>
                     <span className="font-bold text-gray-900 dark:text-gray-100">{formatPrice(order.total)}</span>
                   </div>
 
                   <div>
-                    <span className="text-gray-400 block text-[10px] uppercase font-bold">Ship To</span>
-                    <span className="font-semibold text-gray-800 dark:text-gray-200 truncate max-w-[120px] block">
+                    <span className="text-gray-600 dark:text-gray-400 block text-[10px] uppercase font-bold tracking-wider">Ship To</span>
+                    <span className="font-semibold text-gray-900 dark:text-gray-100 truncate max-w-[140px] block">
                       {order.shippingAddress.fullName}
                     </span>
                   </div>
@@ -172,13 +172,13 @@ export const OrderHistoryView: React.FC = () => {
 
                 <div className="flex items-center gap-4">
                   <div className="text-right">
-                    <span className="text-gray-400 block text-[10px] uppercase font-bold">Order #</span>
+                    <span className="text-gray-600 dark:text-gray-400 block text-[10px] uppercase font-bold tracking-wider">Order #</span>
                     <span className="font-mono font-bold text-gray-900 dark:text-gray-100">{order.id}</span>
                   </div>
 
                   <button
                     onClick={() => setSelectedInvoiceOrder(order)}
-                    className="flex items-center gap-1 text-amber-600 dark:text-amber-400 hover:underline font-bold"
+                    className="flex items-center gap-1 text-amber-600 dark:text-amber-400 hover:underline font-bold cursor-pointer"
                   >
                     <Receipt size={14} /> View Invoice
                   </button>

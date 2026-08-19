@@ -74,7 +74,7 @@ export const CartDrawer: React.FC = () => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header */}
-        <div className="p-4 sm:p-5 border-b border-gray-200 dark:border-slate-800 flex items-center justify-between bg-gray-50/80 dark:bg-slate-850">
+        <div className="p-4 sm:p-5 border-b border-gray-200 dark:border-slate-800 flex items-center justify-between bg-gray-100 dark:bg-slate-800">
           <div className="flex items-center gap-2">
             <ShoppingCart size={20} className="text-amber-500" />
             <h2 className="text-base font-black text-gray-900 dark:text-gray-100">
@@ -85,7 +85,7 @@ export const CartDrawer: React.FC = () => {
           <button
             id="close-cart-drawer-btn"
             onClick={() => setIsCartOpen(false)}
-            className="p-1.5 rounded-full text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
           >
             <X size={20} />
           </button>
@@ -143,11 +143,11 @@ export const CartDrawer: React.FC = () => {
                 return (
                   <div
                     key={`${item.productId}-${item.variantId || 'base'}`}
-                    className="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-800 space-y-2.5"
+                    className="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 space-y-2.5"
                   >
                     <div className="flex gap-3">
                       {/* Product Thumbnail */}
-                      <div className="relative w-16 h-16 bg-white dark:bg-slate-800 rounded-lg overflow-hidden border border-gray-200 dark:border-slate-700 shrink-0">
+                      <div className="relative w-16 h-16 bg-white dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-slate-700 shrink-0">
                         <Image
                           src={item.product.images[0]}
                           alt={item.product.title}
@@ -159,7 +159,7 @@ export const CartDrawer: React.FC = () => {
 
                       {/* Info */}
                       <div className="flex-1 min-w-0">
-                        <div className="text-[10px] font-bold uppercase text-gray-400">{item.product.brand}</div>
+                        <div className="text-[10px] font-bold uppercase text-gray-500 dark:text-gray-400">{item.product.brand}</div>
                         <h4 className="font-bold text-xs text-gray-900 dark:text-gray-100 truncate">
                           {item.product.title}
                         </h4>
@@ -277,21 +277,21 @@ export const CartDrawer: React.FC = () => {
                 {savedForLater.map((sItem) => (
                   <div
                     key={`${sItem.productId}-${sItem.variantId || 'base'}`}
-                    className="p-2.5 rounded-lg bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-800 flex items-center justify-between text-xs"
+                    className="p-2.5 rounded-lg bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 flex items-center justify-between text-xs"
                   >
                     <div className="flex items-center gap-2 min-w-0">
-                      <div className="relative w-10 h-10 bg-white dark:bg-slate-800 rounded p-1 shrink-0">
+                      <div className="relative w-10 h-10 bg-white dark:bg-slate-900 rounded p-1 shrink-0 border border-gray-200 dark:border-slate-700">
                         <Image src={sItem.product.images[0]} alt="" fill className="object-contain" referrerPolicy="no-referrer" />
                       </div>
                       <div className="truncate">
                         <div className="font-bold text-gray-900 dark:text-gray-100 truncate">{sItem.product.title}</div>
-                        <div className="text-gray-500">{formatPrice(sItem.product.price)}</div>
+                        <div className="text-gray-600 dark:text-gray-400">{formatPrice(sItem.product.price)}</div>
                       </div>
                     </div>
 
                     <button
                       onClick={() => moveToCartFromSaved(sItem)}
-                      className="px-3 py-1 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold rounded text-xs shrink-0"
+                      className="px-3 py-1 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold rounded text-xs shrink-0 cursor-pointer"
                     >
                       Move to Cart
                     </button>
@@ -304,7 +304,7 @@ export const CartDrawer: React.FC = () => {
 
         {/* Footer Checkout Calculation */}
         {cart.length > 0 && (
-          <div className="p-4 sm:p-5 border-t border-gray-200 dark:border-slate-800 bg-gray-50/90 dark:bg-slate-850 space-y-3">
+          <div className="p-4 sm:p-5 border-t border-gray-200 dark:border-slate-800 bg-gray-100 dark:bg-slate-800 space-y-3">
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between text-gray-600 dark:text-gray-400">
                 <span>{t('subtotal')}</span>

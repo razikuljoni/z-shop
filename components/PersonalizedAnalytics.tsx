@@ -220,12 +220,12 @@ export const PersonalizedAnalytics: React.FC = () => {
             <div
               key={prod.id}
               onClick={() => setActiveProductDetail(prod)}
-              className="p-3 rounded-xl border border-gray-100 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500 bg-gray-50 dark:bg-slate-850 cursor-pointer transition-all space-y-2 group"
+              className="p-3 rounded-xl border border-gray-200 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500 bg-gray-50 dark:bg-slate-800 cursor-pointer transition-all space-y-2 group"
             >
               <div className="relative aspect-square rounded-lg bg-white dark:bg-slate-900 overflow-hidden">
                 <Image src={prod.images[0]} alt={prod.title} fill className="object-contain p-2 group-hover:scale-105 transition-transform" referrerPolicy="no-referrer" />
               </div>
-              <div className="text-[10px] font-bold uppercase text-gray-400">{prod.brand}</div>
+              <div className="text-[10px] font-bold uppercase text-gray-500 dark:text-gray-400">{prod.brand}</div>
               <h4 className="font-bold text-xs text-gray-900 dark:text-gray-100 truncate group-hover:text-amber-500 transition-colors">
                 {prod.title}
               </h4>

@@ -130,13 +130,13 @@ export const ProductDetailModal: React.FC = () => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-3.5 border-b border-gray-200 dark:border-slate-800 bg-gray-50/70 dark:bg-slate-850">
+        <div className="flex items-center justify-between px-6 py-3.5 border-b border-gray-200 dark:border-slate-800 bg-gray-100 dark:bg-slate-800">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300">
               {product.category}
             </span>
-            <span className="text-gray-300 dark:text-slate-700">•</span>
-            <span className="text-xs font-semibold text-gray-600 dark:text-gray-300">
+            <span className="text-gray-400 dark:text-slate-600">•</span>
+            <span className="text-xs font-semibold text-gray-700 dark:text-gray-200">
               Sold by {product.sellerName} ({product.sellerRating}★)
             </span>
           </div>
@@ -147,7 +147,7 @@ export const ProductDetailModal: React.FC = () => {
               className={`p-2 rounded-full transition-colors ${
                 isWishlisted
                   ? 'text-red-500 bg-red-50 dark:bg-red-950/50'
-                  : 'text-gray-400 hover:text-red-500 hover:bg-gray-100 dark:hover:bg-slate-800'
+                  : 'text-gray-500 hover:text-red-500 hover:bg-gray-100 dark:hover:bg-slate-800'
               }`}
             >
               <Heart size={18} className={isWishlisted ? 'fill-current' : ''} />
@@ -156,7 +156,7 @@ export const ProductDetailModal: React.FC = () => {
             <button
               id="close-pdp-modal-btn"
               onClick={() => setActiveProductDetail(null)}
-              className="p-2 rounded-full text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
+              className="p-2 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-slate-800 transition-colors"
             >
               <X size={20} />
             </button>
@@ -235,13 +235,13 @@ export const ProductDetailModal: React.FC = () => {
               </div>
 
               {/* Price & Savings */}
-              <div className="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-850 border border-gray-100 dark:border-slate-800 space-y-1">
+              <div className="p-3.5 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-100 dark:border-slate-800 space-y-1">
                 <div className="flex items-baseline gap-3">
                   <span className="text-3xl font-black text-gray-900 dark:text-gray-100 tracking-tight">
                     {formatPrice(currentPrice)}
                   </span>
                   {product.originalPrice && product.originalPrice > currentPrice && (
-                    <span className="text-sm text-gray-400 line-through">
+                    <span className="text-sm text-gray-500 line-through">
                       {formatPrice(product.originalPrice)}
                     </span>
                   )}
@@ -257,7 +257,7 @@ export const ProductDetailModal: React.FC = () => {
                   <span className="font-bold text-blue-600 dark:text-blue-400">
                     FREE Prime Next-Day Delivery.
                   </span>
-                  <span className="text-gray-500">Order within 3 hrs 24 mins</span>
+                  <span className="text-gray-500 dark:text-gray-400">Order within 3 hrs 24 mins</span>
                 </div>
               </div>
 
@@ -370,7 +370,7 @@ export const ProductDetailModal: React.FC = () => {
 
           {/* Frequently Bought Together Bundle Section */}
           {bundleProducts.length > 0 && (
-            <div className="bg-amber-50/60 dark:bg-slate-850 p-4 sm:p-5 rounded-xl border border-amber-200 dark:border-slate-700 space-y-3">
+            <div className="bg-amber-50/60 dark:bg-slate-800 p-4 sm:p-5 rounded-xl border border-amber-200 dark:border-slate-700 space-y-3">
               <div className="flex items-center justify-between">
                 <h3 className="font-black text-sm text-gray-900 dark:text-gray-100 flex items-center gap-1.5">
                   <Plus size={16} className="text-amber-500" /> Frequently Bought Together
@@ -484,10 +484,10 @@ export const ProductDetailModal: React.FC = () => {
 
                   <div>
                     <h4 className="font-bold text-gray-900 dark:text-gray-100 text-sm mb-2">Technical Specifications</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 border border-gray-200 dark:border-slate-800 rounded-lg p-3 bg-gray-50 dark:bg-slate-850">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 border border-gray-200 dark:border-slate-800 rounded-lg p-3 bg-gray-50 dark:bg-slate-800">
                       {Object.entries(product.specifications).map(([key, val]) => (
                         <div key={key} className="flex justify-between py-1 border-b border-gray-100 dark:border-slate-800 last:border-none">
-                          <span className="font-semibold text-gray-500">{key}</span>
+                          <span className="font-semibold text-gray-600 dark:text-gray-400">{key}</span>
                           <span className="font-bold text-gray-900 dark:text-gray-100">{val}</span>
                         </div>
                       ))}
@@ -525,10 +525,10 @@ export const ProductDetailModal: React.FC = () => {
                   {isGeneratingSummary ? (
                     <div className="py-8 text-center space-y-2">
                       <Loader2 size={24} className="animate-spin text-purple-600 mx-auto" />
-                      <p className="text-xs text-gray-500 font-medium">Gemini is analyzing authentic purchaser reviews...</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Gemini is analyzing authentic purchaser reviews...</p>
                     </div>
                   ) : (
-                    <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-800 text-xs leading-relaxed text-gray-700 dark:text-gray-200 whitespace-pre-line">
+                    <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 text-xs leading-relaxed text-gray-700 dark:text-gray-200 whitespace-pre-line">
                       {aiSummary || 'Click generate to summarize key customer takeaways.'}
                     </div>
                   )}
@@ -539,14 +539,14 @@ export const ProductDetailModal: React.FC = () => {
               {activeTab === 'reviews' && (
                 <div className="space-y-4">
                   {product.reviews.map((rev) => (
-                    <div key={rev.id} className="p-4 rounded-xl bg-gray-50 dark:bg-slate-850 border border-gray-100 dark:border-slate-800 space-y-1.5">
+                    <div key={rev.id} className="p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 space-y-1.5">
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-xs text-gray-900 dark:text-gray-100">{rev.author}</span>
-                        <span className="text-[11px] text-gray-400">{rev.date}</span>
+                        <span className="text-[11px] text-gray-500 dark:text-gray-400">{rev.date}</span>
                       </div>
                       <div className="flex items-center gap-1 text-amber-500">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} size={12} className={i < rev.rating ? 'fill-current' : 'text-gray-300'} />
+                          <Star key={i} size={12} className={i < rev.rating ? 'fill-current' : 'text-gray-300 dark:text-slate-600'} />
                         ))}
                         <span className="text-xs font-bold text-gray-800 dark:text-gray-200 ml-1">{rev.title}</span>
                       </div>

@@ -278,7 +278,7 @@ export const AdminDashboard: React.FC = () => {
 
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-gray-50 dark:bg-slate-850 text-gray-500 uppercase tracking-wider font-bold border-b border-gray-200 dark:border-slate-800">
+              <thead className="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 uppercase tracking-wider font-bold border-b border-gray-200 dark:border-slate-700">
                 <tr>
                   <th className="px-4 py-3">Product</th>
                   <th className="px-4 py-3">Category</th>
@@ -291,7 +291,7 @@ export const AdminDashboard: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-gray-200 dark:divide-slate-800">
                 {filteredProducts.map((prod) => (
-                  <tr key={prod.id} className="hover:bg-gray-50 dark:hover:bg-slate-850/60 transition-colors">
+                  <tr key={prod.id} className="hover:bg-gray-50 dark:hover:bg-slate-800/60 transition-colors">
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
                         <div className="relative w-10 h-10 bg-gray-100 dark:bg-slate-800 rounded-lg overflow-hidden shrink-0 border border-gray-200 dark:border-slate-700">
@@ -372,7 +372,7 @@ export const AdminDashboard: React.FC = () => {
         <div className="space-y-4">
           <div className="bg-white dark:bg-slate-900 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-gray-50 dark:bg-slate-850 text-gray-500 uppercase tracking-wider font-bold border-b border-gray-200 dark:border-slate-800">
+              <thead className="bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 uppercase tracking-wider font-bold border-b border-gray-200 dark:border-slate-700">
                 <tr>
                   <th className="px-4 py-3">Order ID</th>
                   <th className="px-4 py-3">Customer & Address</th>
@@ -385,7 +385,7 @@ export const AdminDashboard: React.FC = () => {
               </thead>
               <tbody className="divide-y divide-gray-200 dark:divide-slate-800">
                 {orders.map((order) => (
-                  <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-slate-850/60 transition-colors">
+                  <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-slate-800/60 transition-colors">
                     <td className="px-4 py-3 font-mono font-bold text-gray-900 dark:text-gray-100">
                       {order.id}
                       <div className="text-[10px] text-gray-400 font-sans">{order.placedAt}</div>
