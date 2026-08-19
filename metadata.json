@@ -1,0 +1,6 @@
+{
+  "name": "Z Shop",
+  "description": "Full-stack Amazon-scale e-commerce platform with smart recommendations, real-time inventory, live order tracking, multi-currency localization, 2FA security, customer analytics, and seller management.",
+  "requestFramePermissions": ["notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
