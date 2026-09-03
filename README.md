@@ -1,5 +1,6 @@
 # Z Shop — Next-Gen E-Commerce Platform & AI Shopping Assistant
 
+[![Live Production](https://img.shields.io/badge/Live_Demo-z--shop--online.vercel.app-000000?style=flat-square&logo=vercel)](https://z-shop-online.vercel.app)
 [![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
@@ -8,6 +9,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
 Z Shop is a production-ready, full-stack Amazon-scale e-commerce platform built with Next.js 15, React 19, TypeScript, Tailwind CSS v4, and Google Gemini AI. It combines real-time inventory management, multi-currency support, interactive live order tracking, seller admin analytics, and an integrated Gemini AI Shopping Advisor.
+
+🌐 **Live Production URL**: [https://z-shop-online.vercel.app](https://z-shop-online.vercel.app)  
+⚡ **Vercel Project Dashboard**: [https://vercel.com/razikuljoni/z-shop](https://vercel.com/razikuljoni/z-shop)
 
 ---
 
@@ -50,55 +54,24 @@ Z Shop is a production-ready, full-stack Amazon-scale e-commerce platform built 
 - **Charts & Visualizations**: [Recharts](https://recharts.org/)
 - **Forms & Validation**: React Hook Form with Zod (`@hookform/resolvers`)
 - **Effects**: `canvas-confetti` for purchase celebratory animations
+- **Deployment**: [Vercel](https://vercel.com/) (Serverless Next.js engine)
 
 ---
 
-## 📂 Folder & File Structure
+## 🚀 Production Deployment (Vercel)
 
-```text
-z-shop/
-├── app/                        # Next.js App Router root
-│   ├── api/                    # Server-side API endpoints
-│   │   └── gemini/
-│   │       └── advisor/        # Gemini AI advisor route handler
-│   ├── favicon.ico
-│   ├── globals.css             # Tailwind v4 theme & global styles
-│   ├── layout.tsx              # Root HTML & body wrapper
-│   └── page.tsx                # Main entry application view
-├── components/                 # Reusable UI React components
-│   ├── AIAdvisorDrawer.tsx     # Gemini AI chat interface
-│   ├── AdminDashboard.tsx      # Seller/Admin analytics & inventory
-│   ├── AuthModal.tsx           # Login / Register / 2FA modal
-│   ├── CartDrawer.tsx          # Cart management drawer
-│   ├── CheckoutModal.tsx       # Multi-step checkout flow
-│   ├── Footer.tsx              # Application footer
-│   ├── HeroBanner.tsx          # Promotional carousel & hero
-│   ├── LiveTrackingModal.tsx   # Live order tracking interface
-│   ├── Navbar.tsx              # Header, search, currency, auth state
-│   ├── NotificationCenter.tsx  # In-app notifications drawer
-│   ├── OrderHistoryView.tsx    # Customer order history list
-│   ├── PersonalizedAnalytics.tsx # Customer shopping insights
-│   ├── ProductCard.tsx         # Individual product UI card
-│   ├── ProductDetailModal.tsx  # Product details preview modal
-│   └── ProductGrid.tsx         # Responsive product grid view
-├── context/                    # React Context providers (State)
-├── data/
-│   └── mockData.ts             # Initial product, order, category dataset
-├── hooks/                      # Custom React hooks
-├── lib/
-│   └── utils.ts                # Tailwind class merge helper (`cn`)
-├── types/
-│   └── ecommerce.ts            # Core TypeScript interfaces & types
-├── .env.example                # Template for environment variables
-├── .eslintrc.json              # ESLint configuration
-├── eslint.config.mjs           # Next.js ESLint flat config
-├── next.config.ts              # Next.js build & runtime configuration
-├── package.json                # Project dependencies & scripts
-├── pnpm-lock.yaml              # Package lockfile (pnpm)
-├── postcss.config.mjs          # PostCSS configuration
-├── tsconfig.json               # TypeScript compiler config
-└── README.md                   # Project documentation
-```
+### Live Application Links
+- **Production Site**: [https://z-shop-online.vercel.app](https://z-shop-online.vercel.app)
+- **Vercel Console**: [https://vercel.com/razikuljoni/z-shop](https://vercel.com/razikuljoni/z-shop)
+
+### Vercel Configuration & Fixes
+To prevent Vercel connection timeouts (`ERR_CONNECTION_TIMED_OUT`) and blank page issues:
+1. **Next.js Output**: Do NOT set `output: 'standalone'` in `next.config.ts`. Vercel automatically manages Next.js serverless functions natively.
+2. **Environment Variables**: In Vercel Project Settings > Environment Variables, add:
+   - `GEMINI_API_KEY`: Your Google Gemini API key from [Google AI Studio](https://aistudio.google.com/).
+   - `APP_URL`: `https://z-shop-online.vercel.app`
+   - `NEXT_PUBLIC_APP_URL`: `https://z-shop-online.vercel.app`
+3. **Build Settings**: Framework: `Next.js`, Build Command: `pnpm build`, Output Directory: `.next`.
 
 ---
 
@@ -137,7 +110,7 @@ Copy `.env.example` to create `.env.local`:
 cp .env.example .env.local
 ```
 
-Open `.env.local` and add your Google Gemini API key:
+Open `.env.local` and configure your API key and APP URL:
 
 ```env
 GEMINI_API_KEY="your_actual_gemini_api_key"
@@ -145,21 +118,13 @@ APP_URL="http://localhost:3000"
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
 
-> 💡 Get your free API key at [Google AI Studio](https://aistudio.google.com/).
-
 ### 4. Run Development Server
 
-Using **pnpm**:
 ```bash
 pnpm dev
 ```
 
-Using **npm**:
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
@@ -175,63 +140,6 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 ---
 
-## 🚀 Production Deployment
-
-### Option A: Deploy to Vercel (Recommended)
-
-1. Push your code to GitHub repository.
-2. Go to [Vercel Dashboard](https://vercel.com/new) and import your `z-shop` repository.
-3. Configure Environment Variables in Vercel settings:
-   - `GEMINI_API_KEY`: Your Gemini API key
-   - `APP_URL`: Production domain URL (e.g., `https://z-shop.vercel.app`)
-4. Click **Deploy**. Vercel automatically detects Next.js 15 and executes `pnpm build`.
-
-### Option B: Deploy via Docker
-
-Create a `Dockerfile` in the root folder:
-
-```dockerfile
-FROM node:20-alpine AS builder
-WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@latest --activate
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
-COPY . .
-RUN pnpm build
-
-FROM node:20-alpine AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/node_modules ./node_modules
-
-EXPOSE 3000
-CMD ["pnpm", "start"]
-```
-
-Build and run container:
-
-```bash
-docker build -t z-shop .
-docker run -p 3000:3000 -e GEMINI_API_KEY="your_key" z-shop
-```
-
----
-
-## 📸 Screenshots & UI Preview
-
-| View | Highlights |
-|---|---|
-| **Storefront & Catalog** | Hero promotional banner, category filters, responsive product grid, instant search |
-| **Product Detail & Specs** | High-res imagery, stock tags, review ratings, specs list, instant cart addition |
-| **AI Advisor Drawer** | Real-time chat powered by Gemini AI with custom product recommendations |
-| **Checkout & Live Map** | Step-by-step payment flow, instant receipt, interactive live delivery route |
-| **Admin Analytics** | Recharts revenue graphs, inventory alert dashboard, order status toggles |
-
----
-
 ## 📄 License
 
 Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
@@ -243,3 +151,4 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 Developed with ❤️ by **MD Razikul Islam Joni**
 - GitHub: [@razikuljoni](https://github.com/razikuljoni)
 - Repository: [github.com/razikuljoni/z-shop](https://github.com/razikuljoni/z-shop)
+- Live Production: [https://z-shop-online.vercel.app](https://z-shop-online.vercel.app)
