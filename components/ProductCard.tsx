@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Product } from '@/types/ecommerce';
 import { useApp } from '@/context/AppContext';
 import {
@@ -9,9 +9,7 @@ import {
   Heart,
   Eye,
   Check,
-  Zap,
   Award,
-  Truck,
   Flame,
 } from 'lucide-react';
 import Image from 'next/image';
@@ -19,6 +17,24 @@ import Image from 'next/image';
 interface ProductCardProps {
   product: Product;
 }
+
+const RatingStars: React.FC<{ rating: number }> = ({ rating }) => (
+  <div className="flex items-center text-amber-500 text-xs">
+    {[0, 1, 2, 3, 4].map((i) => (
+      <Star
+        key={i}
+        size={13}
+        className={i < Math.floor(rating) ? 'fill-current' : 'text-gray-300 dark:text-slate-700'}
+      />
+    ))}
+  </div>
+);
+
+const StockBadge: React.FC<{ stock: number; t: (key: string, options?: any) => string }> = ({ stock, t }) => {
+  if (stock <= 0) return <span className="text-red-600 font-bold">Out of Stock</span>;
+  if (stock <= 5) return <span className="text-amber-600 dark:text-amber-400 font-bold">{t('only_left', { count: stock })}</span>;
+  return <span className="text-emerald-600 dark:text-emerald-400 font-medium">{t('in_stock')} ({stock})</span>;
+};
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const {
@@ -40,14 +56,32 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     setTimeout(() => setIsAdded(false), 1500);
   };
 
-  const discountPercent = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
-    : 0;
+  const discountPercent = useMemo(
+    () => (product.originalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0),
+    [product.originalPrice, product.price]
+  );
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return;
+    setActiveProductDetail(product);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      if ((e.target as HTMLElement).closest('button')) return;
+      e.preventDefault();
+      setActiveProductDetail(product);
+    }
+  };
 
   return (
     <div
       id={`product-card-${product.id}`}
-      onClick={() => setActiveProductDetail(product)}
+      role="group"
+      aria-label={product.title}
+      tabIndex={0}
+      onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
       className="group relative bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-3.5 sm:p-4 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 dark:hover:border-amber-500/60 transition-colors transition-shadow duration-300 cursor-pointer"
     >
       {/* Top Badges & Wishlist Action */}
@@ -118,15 +152,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* Rating and Reviews */}
         <div className="flex items-center gap-1.5 mb-2">
-          <div className="flex items-center text-amber-500 text-xs">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                size={13}
-                className={i < Math.floor(product.rating) ? 'fill-current' : 'text-gray-300 dark:text-slate-700'}
-              />
-            ))}
-          </div>
+          <RatingStars rating={product.rating} />
           <span className="text-xs font-bold text-gray-700 dark:text-gray-300">{product.rating}</span>
           <span className="text-xs text-gray-400">({product.reviewCount.toLocaleString()})</span>
         </div>
@@ -170,17 +196,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* Stock Level Indicator */}
         <div className="text-xs mb-3">
-          {product.stock <= 0 ? (
-            <span className="text-red-600 font-bold">Out of Stock</span>
-          ) : product.stock <= 5 ? (
-            <span className="text-amber-600 dark:text-amber-400 font-bold">
-              {t('only_left', { count: product.stock })}
-            </span>
-          ) : (
-            <span className="text-emerald-600 dark:text-emerald-400 font-medium">
-              {t('in_stock')} ({product.stock})
-            </span>
-          )}
+          <StockBadge stock={product.stock} t={t} />
         </div>
       </div>
 

@@ -15,6 +15,20 @@ import {
   Sparkles,
 } from 'lucide-react';
 
+const getNotificationIcon = (type: string) => {
+  switch (type) {
+    case 'delivery':
+    case 'order_status':
+      return <Truck size={16} className="text-amber-500" />;
+    case 'deal':
+      return <Flame size={16} className="text-red-500" />;
+    case 'security':
+      return <ShieldCheck size={16} className="text-emerald-500" />;
+    default:
+      return <Bell size={16} className="text-blue-500" />;
+  }
+};
+
 export const NotificationCenter: React.FC = () => {
   const {
     notifications,
@@ -38,20 +52,6 @@ export const NotificationCenter: React.FC = () => {
     );
   };
 
-  const getIcon = (type: string) => {
-    switch (type) {
-      case 'delivery':
-      case 'order_status':
-        return <Truck size={16} className="text-amber-500" />;
-      case 'deal':
-        return <Flame size={16} className="text-red-500" />;
-      case 'security':
-        return <ShieldCheck size={16} className="text-emerald-500" />;
-      default:
-        return <Bell size={16} className="text-blue-500" />;
-    }
-  };
-
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/50 backdrop-blur-xs flex justify-end animate-in fade-in duration-200">
       <div
@@ -70,6 +70,7 @@ export const NotificationCenter: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setIsNotificationsOpen(false)}
+              aria-label="Close Notifications"
               className="p-1.5 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
             >
               <X size={18} />
@@ -100,7 +101,8 @@ export const NotificationCenter: React.FC = () => {
             </div>
           ) : (
             notifications.map((notif) => (
-              <div
+              <button
+                type="button"
                 key={notif.id}
                 onClick={() => {
                   markNotificationAsRead(notif.id);
@@ -109,7 +111,7 @@ export const NotificationCenter: React.FC = () => {
                     setIsNotificationsOpen(false);
                   }
                 }}
-                className={`p-3.5 rounded-xl border transition-colors cursor-pointer space-y-1 ${
+                className={`w-full text-left p-3.5 rounded-xl border transition-colors cursor-pointer space-y-1 ${
                   !notif.read
                     ? 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-300 dark:border-amber-900/60 shadow-xs'
                     : 'bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-750'
@@ -118,7 +120,7 @@ export const NotificationCenter: React.FC = () => {
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-full bg-white dark:bg-slate-700 flex items-center justify-center shadow-xs shrink-0 border border-gray-200 dark:border-slate-600">
-                      {getIcon(notif.type)}
+                      {getNotificationIcon(notif.type)}
                     </div>
                     <h4 className="font-bold text-xs text-gray-900 dark:text-gray-100">
                       {notif.title}
@@ -130,7 +132,7 @@ export const NotificationCenter: React.FC = () => {
                 <p className="text-xs text-gray-600 dark:text-gray-300 pl-9 leading-relaxed">
                   {notif.message}
                 </p>
-              </div>
+              </button>
             ))
           )}
         </div>

@@ -17,6 +17,32 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
+const getStatusIndex = (status: string) => {
+  switch (status) {
+    case 'Order Placed':
+      return 0;
+    case 'Processing':
+      return 1;
+    case 'Shipped':
+      return 2;
+    case 'Out for Delivery':
+      return 3;
+    case 'Delivered':
+      return 4;
+    case 'Cancelled':
+      return -1;
+    default:
+      return 0;
+  }
+};
+
+const TRACKING_STEPS = [
+  { title: 'Order Placed', desc: 'Verified & Payment Secured', time: 'Today 9:15 AM' },
+  { title: 'Processing & Packed', desc: 'Fulfillment Hub WA-8 (Seattle)', time: 'Today 11:30 AM' },
+  { title: 'Out for Delivery', desc: 'On electric courier van #402', time: 'Today 1:45 PM' },
+  { title: 'Delivered', desc: 'Left in secure parcel locker or porch', time: 'Estimated 3:30 PM' },
+];
+
 export const LiveTrackingModal: React.FC = () => {
   const {
     activeOrderForTracking,
@@ -29,33 +55,8 @@ export const LiveTrackingModal: React.FC = () => {
 
   if (!order) return null;
 
-  const getStatusIndex = (status: string) => {
-    switch (status) {
-      case 'Order Placed':
-        return 0;
-      case 'Processing':
-        return 1;
-      case 'Shipped':
-        return 2;
-      case 'Out for Delivery':
-        return 3;
-      case 'Delivered':
-        return 4;
-      case 'Cancelled':
-        return -1;
-      default:
-        return 0;
-    }
-  };
-
   const statusIndex = getStatusIndex(order.status);
-
-  const steps = [
-    { title: 'Order Placed', desc: 'Verified & Payment Secured', time: 'Today 9:15 AM' },
-    { title: 'Processing & Packed', desc: 'Fulfillment Hub WA-8 (Seattle)', time: 'Today 11:30 AM' },
-    { title: 'Out for Delivery', desc: 'On electric courier van #402', time: 'Today 1:45 PM' },
-    { title: 'Delivered', desc: 'Left in secure parcel locker or porch', time: 'Estimated 3:30 PM' },
-  ];
+  const steps = TRACKING_STEPS;
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
@@ -79,6 +80,7 @@ export const LiveTrackingModal: React.FC = () => {
 
           <button
             onClick={() => setActiveOrderForTracking(null)}
+            aria-label="Close Live Tracking"
             className="p-1.5 rounded-full text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
           >
             <X size={20} />
@@ -186,7 +188,7 @@ export const LiveTrackingModal: React.FC = () => {
                 const isCurrent = statusIndex === idx;
 
                 return (
-                  <div key={idx} className="relative space-y-0.5">
+                  <div key={stepItem.title} className="relative space-y-0.5">
                     <div
                       className={`absolute -left-[31px] top-0.5 w-4 h-4 rounded-full flex items-center justify-center text-[10px] ${
                         isPassed
@@ -214,8 +216,8 @@ export const LiveTrackingModal: React.FC = () => {
           <div className="p-4 rounded-xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-800 text-xs space-y-2">
             <div className="font-bold text-gray-900 dark:text-gray-100">Package Contents</div>
             <div className="divide-y divide-gray-200 dark:divide-slate-800">
-              {order.items.map((item, i) => (
-                <div key={i} className="py-1.5 flex items-center justify-between">
+              {order.items.map((item) => (
+                <div key={`pkg-${item.productId}-${item.variantId || 'novar'}-${item.quantity}`} className="py-1.5 flex items-center justify-between">
                   <span className="truncate max-w-[280px] text-gray-700 dark:text-gray-300">{item.product.title}</span>
                   <span className="font-bold text-gray-900 dark:text-gray-100">
                     Qty: {item.quantity} ({formatPrice(item.product.price * item.quantity)})

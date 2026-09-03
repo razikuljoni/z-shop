@@ -63,6 +63,7 @@ export const AuthModal: React.FC = () => {
 
           <button
             onClick={() => setIsAuthOpen(false)}
+            aria-label="Close user profile modal"
             className="p-1.5 rounded-full text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
           >
             <X size={20} />

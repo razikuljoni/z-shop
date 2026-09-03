@@ -80,6 +80,7 @@ export const HeroBanner: React.FC = () => {
             src={slide.image}
             alt={slide.title}
             fill
+            sizes="100vw"
             priority
             className="object-cover object-center scale-105 transition-transform duration-1000"
             referrerPolicy="no-referrer"
@@ -151,12 +152,13 @@ export const HeroBanner: React.FC = () => {
       <div className="relative -mt-16 sm:-mt-24 z-20 max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Card 1 */}
-          <div
+          <button
+            type="button"
             onClick={() => {
               setSelectedCategory('Audio & Headphones');
               setViewMode('catalog');
             }}
-            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
+            className="w-full text-left bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
           >
             <h3 className="font-bold text-gray-900 dark:text-gray-100 text-base mb-1">
               Top Premium Audio
@@ -169,6 +171,7 @@ export const HeroBanner: React.FC = () => {
                 src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=80"
                 alt="Headphones"
                 fill
+                sizes="(max-width: 768px) 100vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 referrerPolicy="no-referrer"
               />
@@ -176,15 +179,16 @@ export const HeroBanner: React.FC = () => {
             <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:underline">
               See more deals →
             </span>
-          </div>
+          </button>
 
           {/* Card 2 */}
-          <div
+          <button
+            type="button"
             onClick={() => {
               setSelectedCategory('Computers & Tech');
               setViewMode('catalog');
             }}
-            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
+            className="w-full text-left bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
           >
             <h3 className="font-bold text-gray-900 dark:text-gray-100 text-base mb-1">
               Computers & Displays
@@ -197,6 +201,7 @@ export const HeroBanner: React.FC = () => {
                 src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&auto=format&fit=crop&q=80"
                 alt="Displays"
                 fill
+                sizes="(max-width: 768px) 100vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 referrerPolicy="no-referrer"
               />
@@ -204,15 +209,16 @@ export const HeroBanner: React.FC = () => {
             <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:underline">
               Upgrade your setup →
             </span>
-          </div>
+          </button>
 
           {/* Card 3 */}
-          <div
+          <button
+            type="button"
             onClick={() => {
               setSelectedCategory('Home & Kitchen');
               setViewMode('catalog');
             }}
-            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
+            className="w-full text-left bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
           >
             <h3 className="font-bold text-gray-900 dark:text-gray-100 text-base mb-1">
               Home & Kitchen Favorites
@@ -225,6 +231,7 @@ export const HeroBanner: React.FC = () => {
                 src="https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=500&auto=format&fit=crop&q=80"
                 alt="Home & Kitchen"
                 fill
+                sizes="(max-width: 768px) 100vw, 25vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 referrerPolicy="no-referrer"
               />
@@ -232,7 +239,7 @@ export const HeroBanner: React.FC = () => {
             <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 group-hover:underline">
               Explore culinary tech →
             </span>
-          </div>
+          </button>
 
           {/* Card 4: Prime Perks & 1-Day Delivery */}
           <div className="bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-lg p-4 shadow-xl border border-blue-800/60 hover:shadow-2xl transition-colors flex flex-col justify-between">
