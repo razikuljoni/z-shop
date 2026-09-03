@@ -73,7 +73,7 @@ export const HeroBanner: React.FC = () => {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Main Slide Stage */}
-      <div className={`relative min-h-[360px] sm:min-h-[440px] md:min-h-[480px] bg-gradient-to-r ${slide.bgGradient} flex items-center transition-all duration-700`}>
+      <div className={`relative min-h-[360px] sm:min-h-[440px] md:min-h-[480px] bg-gradient-to-r ${slide.bgGradient} flex items-center transition-opacity transition-transform duration-700`}>
         {/* Background Image with Gradient Overlay */}
         <div className="absolute inset-0 opacity-35 dark:opacity-25 mix-blend-luminosity overflow-hidden">
           <Image
@@ -112,7 +112,7 @@ export const HeroBanner: React.FC = () => {
                   setSelectedCategory(slide.category);
                   setViewMode('catalog');
                 }}
-                className="px-6 py-2.5 rounded-md bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                className="px-6 py-2.5 rounded-md bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-sm shadow-xl hover:shadow-2xl transition-colors transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 {slide.ctaText}
               </button>
@@ -120,7 +120,7 @@ export const HeroBanner: React.FC = () => {
               <button
                 id="hero-ai-genie-btn"
                 onClick={() => setIsAdvisorOpen(true)}
-                className="px-4 py-2.5 rounded-md bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-semibold text-sm border border-white/20 transition-all flex items-center gap-1.5"
+                className="px-4 py-2.5 rounded-md bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-semibold text-sm border border-white/20 transition-colors flex items-center gap-1.5"
               >
                 <Sparkles size={16} className="text-amber-300" />
                 <span>Ask Z-Genie for Advice</span>
@@ -132,7 +132,7 @@ export const HeroBanner: React.FC = () => {
         {/* Slide Controls */}
         <button
           onClick={() => setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length)}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-sm transition-all z-20 border border-white/10"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-sm transition-colors z-20 border border-white/10"
           aria-label="Previous Slide"
         >
           <ChevronLeft size={22} />
@@ -140,7 +140,7 @@ export const HeroBanner: React.FC = () => {
 
         <button
           onClick={() => setCurrentSlide((prev) => (prev + 1) % SLIDES.length)}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-sm transition-all z-20 border border-white/10"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2 sm:p-3 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-sm transition-colors z-20 border border-white/10"
           aria-label="Next Slide"
         >
           <ChevronRight size={22} />
@@ -156,7 +156,7 @@ export const HeroBanner: React.FC = () => {
               setSelectedCategory('Audio & Headphones');
               setViewMode('catalog');
             }}
-            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-all cursor-pointer group"
+            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
           >
             <h3 className="font-bold text-gray-900 dark:text-gray-100 text-base mb-1">
               Top Premium Audio
@@ -184,7 +184,7 @@ export const HeroBanner: React.FC = () => {
               setSelectedCategory('Computers & Tech');
               setViewMode('catalog');
             }}
-            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-all cursor-pointer group"
+            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
           >
             <h3 className="font-bold text-gray-900 dark:text-gray-100 text-base mb-1">
               Computers & Displays
@@ -212,7 +212,7 @@ export const HeroBanner: React.FC = () => {
               setSelectedCategory('Home & Kitchen');
               setViewMode('catalog');
             }}
-            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-all cursor-pointer group"
+            className="bg-white dark:bg-slate-900 rounded-lg p-4 shadow-xl border border-gray-200 dark:border-slate-800 hover:shadow-2xl transition-colors cursor-pointer group"
           >
             <h3 className="font-bold text-gray-900 dark:text-gray-100 text-base mb-1">
               Home & Kitchen Favorites
@@ -235,7 +235,7 @@ export const HeroBanner: React.FC = () => {
           </div>
 
           {/* Card 4: Prime Perks & 1-Day Delivery */}
-          <div className="bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-lg p-4 shadow-xl border border-blue-800/60 hover:shadow-2xl transition-all flex flex-col justify-between">
+          <div className="bg-gradient-to-br from-blue-900 to-indigo-950 text-white rounded-lg p-4 shadow-xl border border-blue-800/60 hover:shadow-2xl transition-colors flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-1.5 text-amber-400 font-black text-lg italic mb-1">
                 <Truck size={20} />

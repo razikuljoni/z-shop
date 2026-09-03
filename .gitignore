@@ -21,6 +21,7 @@ pnpm-debug.log*
 
 # Tooling & IDE metadata
 .codegraph/
+.omo
 .vercel
 .turbo
 .idea/

@@ -96,7 +96,7 @@ export const LiveTrackingModal: React.FC = () => {
             <div className="absolute w-[80%] h-1 bg-gradient-to-r from-blue-500 via-amber-400 to-emerald-500 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.5)]">
               {/* Moving Van Marker */}
               <div
-                className={`absolute top-1/2 -translate-y-1/2 transition-all duration-700 ${
+                className={`absolute top-1/2 -translate-y-1/2 transition-opacity transition-transform duration-700 ${
                   order.status === 'Delivered'
                     ? 'right-0'
                     : order.status === 'Shipped'
@@ -234,7 +234,7 @@ export const LiveTrackingModal: React.FC = () => {
 
           <button
             onClick={() => simulateAdvanceOrderStatus(order.id)}
-            className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs shadow-md transition-colors flex items-center gap-1.5 cursor-pointer"
           >
             <Zap size={14} />
             <span>Simulate Next Delivery Step</span>

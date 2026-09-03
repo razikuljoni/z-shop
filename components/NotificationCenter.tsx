@@ -109,7 +109,7 @@ export const NotificationCenter: React.FC = () => {
                     setIsNotificationsOpen(false);
                   }
                 }}
-                className={`p-3.5 rounded-xl border transition-all cursor-pointer space-y-1 ${
+                className={`p-3.5 rounded-xl border transition-colors cursor-pointer space-y-1 ${
                   !notif.read
                     ? 'bg-amber-50/70 dark:bg-amber-950/30 border-amber-300 dark:border-amber-900/60 shadow-xs'
                     : 'bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-750'
@@ -139,7 +139,7 @@ export const NotificationCenter: React.FC = () => {
         <div className="p-4 border-t border-gray-200 dark:border-slate-800 bg-gray-100 dark:bg-slate-800 space-y-2">
           <button
             onClick={handleTestNotification}
-            className="w-full py-2.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full py-2.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm transition-colors flex items-center justify-center gap-2 cursor-pointer"
           >
             <Sparkles size={15} />
             <span>Simulate Real-Time Push Notification</span>

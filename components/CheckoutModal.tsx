@@ -228,7 +228,7 @@ export const CheckoutModal: React.FC = () => {
                   {user.addresses.map((addr) => (
                     <label
                       key={addr.id}
-                      className={`p-4 rounded-xl border cursor-pointer transition-all ${
+                      className={`p-4 rounded-xl border cursor-pointer transition-colors ${
                         selectedAddressId === addr.id
                           ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/30 ring-2 ring-amber-500/20'
                           : 'border-gray-200 dark:border-slate-800 hover:border-gray-300'
@@ -331,7 +331,7 @@ export const CheckoutModal: React.FC = () => {
 
               <div className="space-y-3">
                 <label
-                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-colors ${
                     shippingSpeed === 'Prime Free Next-Day'
                       ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/30 ring-2 ring-amber-500/20'
                       : 'border-gray-200 dark:border-slate-800'
@@ -357,7 +357,7 @@ export const CheckoutModal: React.FC = () => {
                 </label>
 
                 <label
-                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-colors ${
                     shippingSpeed === 'Same-Day Priority'
                       ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/30 ring-2 ring-amber-500/20'
                       : 'border-gray-200 dark:border-slate-800'
@@ -382,7 +382,7 @@ export const CheckoutModal: React.FC = () => {
                 </label>
 
                 <label
-                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-colors ${
                     shippingSpeed === 'Standard Delivery (2-3 Days)'
                       ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/30 ring-2 ring-amber-500/20'
                       : 'border-gray-200 dark:border-slate-800'
@@ -436,7 +436,7 @@ export const CheckoutModal: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Credit Card Option */}
                 <label
-                  className={`p-4 rounded-xl border flex flex-col justify-between cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border flex flex-col justify-between cursor-pointer transition-colors ${
                     paymentMethod === 'Credit Card'
                       ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/30 ring-2 ring-amber-500/20'
                       : 'border-gray-200 dark:border-slate-800'
@@ -463,7 +463,7 @@ export const CheckoutModal: React.FC = () => {
 
                 {/* Z-Pay Wallet */}
                 <label
-                  className={`p-4 rounded-xl border flex flex-col justify-between cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border flex flex-col justify-between cursor-pointer transition-colors ${
                     paymentMethod === 'Z-Pay Wallet'
                       ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/30 ring-2 ring-amber-500/20'
                       : 'border-gray-200 dark:border-slate-800'
@@ -489,7 +489,7 @@ export const CheckoutModal: React.FC = () => {
 
                 {/* Apple Pay */}
                 <label
-                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-colors ${
                     paymentMethod === 'Apple Pay'
                       ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/30 ring-2 ring-amber-500/20'
                       : 'border-gray-200 dark:border-slate-800'
@@ -510,7 +510,7 @@ export const CheckoutModal: React.FC = () => {
 
                 {/* Cash on Delivery */}
                 <label
-                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
+                  className={`p-4 rounded-xl border flex items-center justify-between cursor-pointer transition-colors ${
                     paymentMethod === 'Cash on Delivery'
                       ? 'border-amber-500 bg-amber-50/50 dark:bg-amber-950/30 ring-2 ring-amber-500/20'
                       : 'border-gray-200 dark:border-slate-800'
@@ -679,7 +679,7 @@ export const CheckoutModal: React.FC = () => {
                     setIsCheckoutOpen(false);
                     setActiveOrderForTracking(createdOrder);
                   }}
-                  className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs shadow-md transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <Truck size={16} />
                   <span>Live Track Package</span>

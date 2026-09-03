@@ -137,7 +137,7 @@ export const OrderHistoryView: React.FC = () => {
           </p>
           <button
             onClick={() => setViewMode('catalog')}
-            className="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm transition-all"
+            className="px-5 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm transition-colors"
           >
             Explore Products
           </button>
@@ -197,7 +197,7 @@ export const OrderHistoryView: React.FC = () => {
 
                   <button
                     onClick={() => setActiveOrderForTracking(order)}
-                    className="px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm flex items-center gap-1.5 transition-all"
+                    className="px-3.5 py-1.5 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm flex items-center gap-1.5 transition-colors"
                   >
                     <Truck size={14} />
                     <span>Track Package</span>

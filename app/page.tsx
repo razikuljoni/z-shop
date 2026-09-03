@@ -60,7 +60,7 @@ const MainContent: React.FC = () => {
           <button
             id="floating-track-btn"
             onClick={() => setActiveOrderForTracking(orders[0])}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-900 dark:bg-slate-800 text-white text-xs font-bold shadow-xl border border-slate-700 hover:scale-105 transition-all group"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-900 dark:bg-slate-800 text-white text-xs font-bold shadow-xl border border-slate-700 hover:scale-105 transition-transform group"
           >
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
             <Truck size={15} className="text-amber-400" />
@@ -72,7 +72,7 @@ const MainContent: React.FC = () => {
         <button
           id="floating-ai-advisor-btn"
           onClick={() => setIsAdvisorOpen(true)}
-          className="flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-amber-500 text-white font-black text-xs shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transition-all group cursor-pointer border-2 border-white/20"
+          className="flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-amber-500 text-white font-black text-xs shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transition-transform transition-shadow group cursor-pointer border-2 border-white/20"
         >
           <Sparkles size={18} className="text-yellow-300 animate-spin-slow group-hover:rotate-45 transition-transform" />
           <span>Ask Z-Genie AI</span>

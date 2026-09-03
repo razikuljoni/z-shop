@@ -110,7 +110,7 @@ export const CartDrawer: React.FC = () => {
                 <span className="font-bold text-amber-600">{Math.round(progressPercent)}%</span>
               </div>
               <div className="w-full h-1.5 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden">
-                <div className="h-full bg-amber-500 rounded-full transition-all duration-300" style={{ width: `${progressPercent}%` }} />
+                <div className="h-full bg-amber-500 rounded-full transition-[width] duration-300" style={{ width: `${progressPercent}%` }} />
               </div>
             </div>
           )}
@@ -131,7 +131,7 @@ export const CartDrawer: React.FC = () => {
               </p>
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="px-5 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm transition-all cursor-pointer"
+                className="px-5 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm transition-colors cursor-pointer"
               >
                 {t('continue_shopping')}
               </button>
@@ -339,7 +339,7 @@ export const CartDrawer: React.FC = () => {
             <button
               id="proceed-to-checkout-btn"
               onClick={handleProceedToCheckout}
-              className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-sm shadow-md hover:shadow-lg transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>{t('proceed_to_checkout')}</span>
               <ArrowRight size={18} />

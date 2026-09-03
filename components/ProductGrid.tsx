@@ -400,7 +400,7 @@ export const ProductGrid: React.FC = () => {
               </p>
               <button
                 onClick={handleResetFilters}
-                className="px-5 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-md transition-all"
+                className="px-5 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-md transition-colors"
               >
                 Reset All Filters
               </button>

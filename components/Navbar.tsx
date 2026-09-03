@@ -140,7 +140,7 @@ export const Navbar: React.FC = () => {
               setSearchQuery('');
               setLocalSearch('');
             }}
-            className="flex items-center gap-1.5 px-2 py-1 rounded border border-transparent hover:border-amber-400 group transition-all"
+            className="flex items-center gap-1.5 px-2 py-1 rounded border border-transparent hover:border-amber-400 group transition-colors"
           >
             <div className="flex items-center font-black tracking-tight text-xl sm:text-2xl">
               <span className="text-white">Z</span>
@@ -173,7 +173,7 @@ export const Navbar: React.FC = () => {
         <form
           id="search-form"
           onSubmit={handleSearchSubmit}
-          className="flex-1 max-w-3xl flex items-center h-10 rounded-md overflow-hidden bg-white dark:bg-slate-900 border-2 border-amber-400 focus-within:ring-2 focus-within:ring-amber-500 transition-all shadow-inner"
+          className="flex-1 max-w-3xl flex items-center h-10 rounded-md overflow-hidden bg-white dark:bg-slate-900 border-2 border-amber-400 focus-within:ring-2 focus-within:ring-amber-500 transition-colors shadow-inner"
         >
           {/* Category Dropdown */}
           <div className="relative hidden sm:block bg-gray-100 dark:bg-slate-800 border-r border-gray-300 dark:border-slate-700 h-full">
@@ -529,7 +529,7 @@ export const Navbar: React.FC = () => {
           <button
             id="ai-advisor-nav-btn"
             onClick={() => setIsAdvisorOpen(true)}
-            className="flex items-center gap-1 px-2.5 py-1 rounded bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold transition-all shadow-sm group"
+            className="flex items-center gap-1 px-2.5 py-1 rounded bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold transition-colors shadow-sm group"
           >
             <Sparkles size={14} className="text-yellow-300 group-hover:rotate-12 transition-transform" />
             <span>Z-Genie AI</span>
