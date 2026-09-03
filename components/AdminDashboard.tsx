@@ -158,7 +158,7 @@ export const AdminDashboard: React.FC = () => {
 
         <button
           onClick={() => setIsAddModalOpen(true)}
-          className="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs shadow-md flex items-center gap-1.5 transition-all self-start sm:self-auto cursor-pointer"
+          className="px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs shadow-md flex items-center gap-1.5 transition-colors self-start sm:self-auto cursor-pointer"
         >
           <Plus size={16} />
           <span>Add New Product SKU</span>
@@ -224,7 +224,7 @@ export const AdminDashboard: React.FC = () => {
       <div className="flex items-center gap-2 border-b border-gray-200 dark:border-slate-800 pb-2">
         <button
           onClick={() => setActiveTab('inventory')}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors ${
             activeTab === 'inventory'
               ? 'bg-amber-400 text-slate-950 shadow-sm'
               : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
@@ -235,7 +235,7 @@ export const AdminDashboard: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('orders')}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors ${
             activeTab === 'orders'
               ? 'bg-amber-400 text-slate-950 shadow-sm'
               : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
@@ -246,7 +246,7 @@ export const AdminDashboard: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('analytics')}
-          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors ${
             activeTab === 'analytics'
               ? 'bg-amber-400 text-slate-950 shadow-sm'
               : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800'
@@ -440,7 +440,7 @@ export const AdminDashboard: React.FC = () => {
                           };
                           updateOrderStatusByAdmin(order.id, nextStatus[order.status] || 'Processing');
                         }}
-                        className="px-3 py-1 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold rounded-lg text-xs shadow-sm transition-all"
+                        className="px-3 py-1 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold rounded-lg text-xs shadow-sm transition-colors"
                       >
                         Next Step →
                       </button>

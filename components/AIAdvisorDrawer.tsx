@@ -98,13 +98,23 @@ export const AIAdvisorDrawer: React.FC = () => {
         }),
       });
 
+      if (!response.ok) {
+        throw new Error(`Advisor API failed with status ${response.status}`);
+      }
+
       const data = await response.json();
 
-      // Find any matched products mentioned in catalog
-      const matchedIds = products
-        .filter((p) => data.text.toLowerCase().includes(p.brand.toLowerCase()) || data.text.toLowerCase().includes(p.title.toLowerCase()))
-        .map((p) => p.id)
-        .slice(0, 2);
+      const lowerText = data.text.toLowerCase();
+      const matchedIds: string[] = [];
+      for (const p of products) {
+        if (matchedIds.length >= 2) break;
+        if (
+          lowerText.includes(p.brand.toLowerCase()) ||
+          lowerText.includes(p.title.toLowerCase())
+        ) {
+          matchedIds.push(p.id);
+        }
+      }
 
       const aiMsg: ChatMessage = {
         id: getNextMsgId('ai'),
@@ -196,7 +206,7 @@ export const AIAdvisorDrawer: React.FC = () => {
                             setActiveProductDetail(prod);
                             setIsAdvisorOpen(false);
                           }}
-                          className="flex items-center justify-between p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 hover:border-amber-400 cursor-pointer transition-all group"
+                          className="flex items-center justify-between p-2 rounded-lg bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 hover:border-amber-400 cursor-pointer transition-colors group"
                         >
                           <div className="flex items-center gap-2 min-w-0">
                             <div className="relative w-10 h-10 bg-gray-50 dark:bg-slate-800 rounded p-1 shrink-0">
@@ -272,7 +282,7 @@ export const AIAdvisorDrawer: React.FC = () => {
           <button
             type="submit"
             disabled={isLoading || !inputPrompt.trim()}
-            className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center transition-all disabled:opacity-50 cursor-pointer"
+            className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center transition-colors transition-opacity disabled:opacity-50 cursor-pointer"
           >
             {isLoading ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
           </button>

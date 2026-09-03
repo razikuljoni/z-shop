@@ -91,6 +91,9 @@ export const ProductDetailModal: React.FC = () => {
           product,
         }),
       });
+      if (!res.ok) {
+        throw new Error(`Review summary API failed with status ${res.status}`);
+      }
       const data = await res.json();
       setAiSummary(data.text);
     } catch {
@@ -114,6 +117,9 @@ export const ProductDetailModal: React.FC = () => {
           product,
         }),
       });
+      if (!res.ok) {
+        throw new Error(`Product QA API failed with status ${res.status}`);
+      }
       const data = await res.json();
       setAiAnswer(data.text);
     } catch {
@@ -174,7 +180,7 @@ export const ProductDetailModal: React.FC = () => {
                   src={product.images[selectedImageIndex] || product.images[0]}
                   alt={product.title}
                   fill
-                  className="object-contain p-4 transition-all duration-300"
+                  className="object-contain p-4 transition-colors transition-shadow duration-300"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -186,7 +192,7 @@ export const ProductDetailModal: React.FC = () => {
                     <button
                       key={idx}
                       onClick={() => setSelectedImageIndex(idx)}
-                      className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-all shrink-0 ${
+                      className={`relative w-16 h-16 rounded-lg overflow-hidden border-2 transition-colors shrink-0 ${
                         selectedImageIndex === idx
                           ? 'border-amber-500 ring-2 ring-amber-500/20'
                           : 'border-gray-200 dark:border-slate-700 opacity-70 hover:opacity-100'
@@ -272,7 +278,7 @@ export const ProductDetailModal: React.FC = () => {
                       <button
                         key={v.id}
                         onClick={() => setSelectedVariant(v)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all ${
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors ${
                           selectedVariant?.id === v.id
                             ? 'border-amber-500 bg-amber-50 dark:bg-amber-950/50 text-amber-900 dark:text-amber-200 ring-2 ring-amber-500/20'
                             : 'border-gray-200 dark:border-slate-700 hover:border-gray-400'
@@ -331,7 +337,7 @@ export const ProductDetailModal: React.FC = () => {
                     id="modal-add-to-cart-btn"
                     onClick={() => addToCart(product, selectedVariant, quantity)}
                     disabled={currentStock <= 0}
-                    className="flex-1 py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="flex-1 py-3 px-4 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-sm shadow-md hover:shadow-lg transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     <ShoppingCart size={18} />
                     <span>Add {quantity} to Cart</span>
@@ -342,7 +348,7 @@ export const ProductDetailModal: React.FC = () => {
                     id="modal-buy-now-btn"
                     onClick={handleBuyNow}
                     disabled={currentStock <= 0}
-                    className="flex-1 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="flex-1 py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-sm shadow-md hover:shadow-lg transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     <Zap size={18} />
                     <span>Buy Now</span>
@@ -401,7 +407,7 @@ export const ProductDetailModal: React.FC = () => {
                   <div className="text-lg font-black text-gray-900 dark:text-gray-100">{formatPrice(discountedBundleTotal)}</div>
                   <button
                     onClick={handleAddBundleToCart}
-                    className="mt-1 px-4 py-2 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm transition-all"
+                    className="mt-1 px-4 py-2 rounded-lg bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-sm transition-colors"
                   >
                     Add Bundle to Cart
                   </button>

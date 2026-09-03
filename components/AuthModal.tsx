@@ -83,7 +83,7 @@ export const AuthModal: React.FC = () => {
           <div className="grid grid-cols-2 gap-2 pt-1">
             <button
               onClick={() => switchUserRole('customer')}
-              className={`p-3 rounded-lg border text-left transition-all text-xs ${
+              className={`p-3 rounded-lg border text-left transition-colors text-xs ${
                 user.role === 'customer'
                   ? 'border-amber-500 bg-amber-50 dark:bg-amber-950/40 font-bold text-amber-900 dark:text-amber-200 ring-1 ring-amber-500'
                   : 'border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700'
@@ -98,7 +98,7 @@ export const AuthModal: React.FC = () => {
 
             <button
               onClick={() => switchUserRole('seller')}
-              className={`p-3 rounded-lg border text-left transition-all text-xs ${
+              className={`p-3 rounded-lg border text-left transition-colors text-xs ${
                 user.role === 'seller'
                   ? 'border-amber-500 bg-amber-50 dark:bg-amber-950/40 font-bold text-amber-900 dark:text-amber-200 ring-1 ring-amber-500'
                   : 'border-gray-200 dark:border-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700'
@@ -161,7 +161,7 @@ export const AuthModal: React.FC = () => {
 
           <button
             onClick={handleTopupWallet}
-            className="px-3 py-1.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded-lg shadow-xs flex items-center gap-1 transition-all cursor-pointer"
+            className="px-3 py-1.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded-lg shadow-xs flex items-center gap-1 transition-colors cursor-pointer"
           >
             {topupSuccess ? <Check size={14} /> : <Plus size={14} />}
             <span>{topupSuccess ? '+$50 Added!' : '+ $50 Recharge'}</span>

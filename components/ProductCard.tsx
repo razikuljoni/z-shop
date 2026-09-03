@@ -48,7 +48,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     <div
       id={`product-card-${product.id}`}
       onClick={() => setActiveProductDetail(product)}
-      className="group relative bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-3.5 sm:p-4 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 dark:hover:border-amber-500/60 transition-all duration-300 cursor-pointer"
+      className="group relative bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-3.5 sm:p-4 flex flex-col justify-between hover:shadow-xl hover:border-amber-400 dark:hover:border-amber-500/60 transition-colors transition-shadow duration-300 cursor-pointer"
     >
       {/* Top Badges & Wishlist Action */}
       <div>
@@ -189,7 +189,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         id={`add-to-cart-btn-${product.id}`}
         onClick={handleAddToCart}
         disabled={product.stock <= 0}
-        className={`w-full py-2 px-3 rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm ${
+        className={`w-full py-2 px-3 rounded-lg font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-sm ${
           product.stock <= 0
             ? 'bg-gray-200 dark:bg-slate-800 text-gray-400 cursor-not-allowed'
             : isAdded
