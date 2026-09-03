@@ -4,12 +4,14 @@ import React from 'react';
 import { useApp } from '@/context/AppContext';
 import { ChevronUp, Globe, ShieldCheck, Truck, Lock } from 'lucide-react';
 
+const scrollToTop = () => {
+  if (typeof window !== 'undefined') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
 export const Footer: React.FC = () => {
   const { setViewMode, setSelectedCategory, language, currency } = useApp();
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <footer className="w-full bg-[#232f3e] text-white border-t border-slate-700 mt-12 select-none">

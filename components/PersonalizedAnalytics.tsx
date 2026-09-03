@@ -13,18 +13,26 @@ import {
   Sparkles,
   ArrowUpRight,
 } from 'lucide-react';
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  PieChart,
-  Pie,
-  Cell,
-} from 'recharts';
+import dynamic from 'next/dynamic';
+
+const ResponsiveContainer = dynamic(() => import('recharts').then((mod) => mod.ResponsiveContainer), { ssr: false });
+const BarChart = dynamic(() => import('recharts').then((mod) => mod.BarChart), { ssr: false });
+const Bar = dynamic(() => import('recharts').then((mod) => mod.Bar), { ssr: false });
+const XAxis = dynamic(() => import('recharts').then((mod) => mod.XAxis), { ssr: false });
+const YAxis = dynamic(() => import('recharts').then((mod) => mod.YAxis), { ssr: false });
+const Tooltip = dynamic(() => import('recharts').then((mod) => mod.Tooltip), { ssr: false });
+const PieChart = dynamic(() => import('recharts').then((mod) => mod.PieChart), { ssr: false });
+const Pie = dynamic(() => import('recharts').then((mod) => mod.Pie), { ssr: false });
+const Cell = dynamic(() => import('recharts').then((mod) => mod.Cell), { ssr: false });
+
 import Image from 'next/image';
+
+const CATEGORY_DATA = [
+  { name: 'Audio & Sound', value: 45, color: '#f59e0b' },
+  { name: 'Computers & Tech', value: 30, color: '#3b82f6' },
+  { name: 'Smart Home', value: 15, color: '#10b981' },
+  { name: 'Accessories', value: 10, color: '#8b5cf6' },
+];
 
 export const PersonalizedAnalytics: React.FC = () => {
   const { user, orders, products, formatPrice, setActiveProductDetail, setViewMode } = useApp();
@@ -42,13 +50,7 @@ export const PersonalizedAnalytics: React.FC = () => {
     { month: 'Aug', spent: totalSpent || 780 },
   ];
 
-  // Category Distribution Data
-  const categoryData = [
-    { name: 'Audio & Sound', value: 45, color: '#f59e0b' },
-    { name: 'Computers & Tech', value: 30, color: '#3b82f6' },
-    { name: 'Smart Home', value: 15, color: '#10b981' },
-    { name: 'Accessories', value: 10, color: '#8b5cf6' },
-  ];
+  const categoryData = CATEGORY_DATA;
 
   // Personalized Recommended Products based on customer's purchase history
   const recommendations = products.slice(0, 4);
@@ -169,8 +171,8 @@ export const PersonalizedAnalytics: React.FC = () => {
                   paddingAngle={5}
                   dataKey="value"
                 >
-                  {categoryData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  {categoryData.map((entry) => (
+                    <Cell key={entry.name} fill={entry.color} />
                   ))}
                 </Pie>
                 <Tooltip
@@ -217,13 +219,14 @@ export const PersonalizedAnalytics: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {recommendations.map((prod) => (
-            <div
+            <button
+              type="button"
               key={prod.id}
               onClick={() => setActiveProductDetail(prod)}
-              className="p-3 rounded-xl border border-gray-200 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500 bg-gray-50 dark:bg-slate-800 cursor-pointer transition-colors space-y-2 group"
+              className="w-full text-left p-3 rounded-xl border border-gray-200 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-500 bg-gray-50 dark:bg-slate-800 cursor-pointer transition-colors space-y-2 group"
             >
               <div className="relative aspect-square rounded-lg bg-white dark:bg-slate-900 overflow-hidden">
-                <Image src={prod.images[0]} alt={prod.title} fill className="object-contain p-2 group-hover:scale-105 transition-transform" referrerPolicy="no-referrer" />
+                <Image src={prod.images[0]} alt={prod.title} fill sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw" className="object-contain p-2 group-hover:scale-105 transition-transform" referrerPolicy="no-referrer" />
               </div>
               <div className="text-[10px] font-bold uppercase text-gray-500 dark:text-gray-400">{prod.brand}</div>
               <h4 className="font-bold text-xs text-gray-900 dark:text-gray-100 truncate group-hover:text-amber-500 transition-colors">
@@ -232,7 +235,7 @@ export const PersonalizedAnalytics: React.FC = () => {
               <div className="font-black text-sm text-gray-900 dark:text-gray-100">
                 {formatPrice(prod.price)}
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>

@@ -17,6 +17,35 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
+const getStatusBadge = (status: Order['status']) => {
+  switch (status) {
+    case 'Delivered':
+      return (
+        <span className="inline-flex items-center gap-1 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
+          <CheckCircle2 size={13} /> Delivered
+        </span>
+      );
+    case 'Shipped':
+      return (
+        <span className="inline-flex items-center gap-1 bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
+          <Truck size={13} /> Out for Delivery
+        </span>
+      );
+    case 'Processing':
+      return (
+        <span className="inline-flex items-center gap-1 bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
+          <Clock size={13} /> Processing
+        </span>
+      );
+    default:
+      return (
+        <span className="inline-flex items-center gap-1 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
+          Pending
+        </span>
+      );
+  }
+};
+
 export const OrderHistoryView: React.FC = () => {
   const {
     orders,
@@ -51,35 +80,6 @@ export const OrderHistoryView: React.FC = () => {
     }
   };
 
-  const getStatusBadge = (status: Order['status']) => {
-    switch (status) {
-      case 'Delivered':
-        return (
-          <span className="inline-flex items-center gap-1 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
-            <CheckCircle2 size={13} /> Delivered
-          </span>
-        );
-      case 'Shipped':
-        return (
-          <span className="inline-flex items-center gap-1 bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
-            <Truck size={13} /> Out for Delivery
-          </span>
-        );
-      case 'Processing':
-        return (
-          <span className="inline-flex items-center gap-1 bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
-            <Clock size={13} /> Processing
-          </span>
-        );
-      default:
-        return (
-          <span className="inline-flex items-center gap-1 bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
-            Pending
-          </span>
-        );
-    }
-  };
-
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 py-8 space-y-6">
       {/* Header */}
@@ -97,6 +97,7 @@ export const OrderHistoryView: React.FC = () => {
         <div className="relative w-full sm:w-72">
           <input
             type="text"
+            aria-label="Search orders or items"
             value={orderSearch}
             onChange={(e) => setOrderSearch(e.target.value)}
             placeholder="Search orders or items..."
@@ -205,14 +206,15 @@ export const OrderHistoryView: React.FC = () => {
                 </div>
 
                 <div className="divide-y divide-gray-100 dark:divide-slate-800">
-                  {order.items.map((item, idx) => (
-                    <div key={idx} className="py-3 flex items-center justify-between gap-4">
+                  {order.items.map((item) => (
+                    <div key={`order-${order.id}-${item.productId}-${item.variantId || 'novar'}-${item.quantity}`} className="py-3 flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3 min-w-0">
                         <div className="relative w-16 h-16 bg-gray-50 dark:bg-slate-800 rounded-lg p-1 border border-gray-200 dark:border-slate-700 shrink-0">
                           <Image
                             src={item.product.images[0]}
                             alt={item.product.title}
                             fill
+                            sizes="64px"
                             className="object-contain"
                             referrerPolicy="no-referrer"
                           />
@@ -262,6 +264,7 @@ export const OrderHistoryView: React.FC = () => {
               </div>
               <button
                 onClick={() => setSelectedInvoiceOrder(null)}
+                aria-label="Close invoice receipt modal"
                 className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-lg font-bold"
               >
                 ✕
@@ -285,8 +288,8 @@ export const OrderHistoryView: React.FC = () => {
               <div className="border-t border-gray-200 dark:border-slate-800 pt-3">
                 <div className="font-bold mb-2">Itemized Summary</div>
                 <div className="divide-y divide-gray-100 dark:divide-slate-800">
-                  {selectedInvoiceOrder.items.map((i, idx) => (
-                    <div key={idx} className="py-1.5 flex justify-between">
+                  {selectedInvoiceOrder.items.map((i) => (
+                    <div key={`inv-${selectedInvoiceOrder.id}-${i.productId}-${i.variantId || 'novar'}-${i.quantity}`} className="py-1.5 flex justify-between">
                       <span>{i.product.title} (x{i.quantity})</span>
                       <span className="font-bold">{formatPrice(i.product.price * i.quantity)}</span>
                     </div>

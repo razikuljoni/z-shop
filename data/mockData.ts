@@ -1,4 +1,25 @@
-import { Product, UserProfile, Order, Coupon, SupportedLanguage, SupportedCurrency, CurrencyConfig } from '@/types/ecommerce';
+import { Product, UserProfile, Order, Coupon, SupportedLanguage, SupportedCurrency, CurrencyConfig, ProductCategory } from '@/types/ecommerce';
+
+export const CATEGORIES: ProductCategory[] = [
+  'All',
+  'Electronics',
+  'Computers & Tech',
+  'Audio & Headphones',
+  'Home & Kitchen',
+  'Gaming & VR',
+  'Fashion & Apparel',
+  'Health & Beauty',
+  'Sports & Outdoors',
+  'Books & Audible',
+];
+
+export const LANGUAGES: { code: SupportedLanguage; name: string; flag: string }[] = [
+  { code: 'en', name: 'English - EN', flag: '🇺🇸' },
+  { code: 'es', name: 'Español - ES', flag: '🇪🇸' },
+  { code: 'fr', name: 'Français - FR', flag: '🇫🇷' },
+  { code: 'ja', name: '日本語 - JA', flag: '🇯🇵' },
+  { code: 'hi', name: 'हिन्दी - HI', flag: '🇮🇳' },
+];
 
 export const CURRENCY_CONFIGS: Record<SupportedCurrency, CurrencyConfig> = {
   USD: { code: 'USD', symbol: '$', rateAgainstUSD: 1.0, name: 'US Dollar' },
